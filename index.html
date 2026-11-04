@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>周末出走 · 城市周末旅行指南</title>
+<meta name="description" content="48 小时的城市逃逸计划：精选高铁可达的周末目的地，附车程、预算、最佳季节与两天一夜路线。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header__inner">
+    <a class="brand" href="#top">
+      <svg class="brand__mark" viewBox="0 0 32 32" aria-hidden="true">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M16 6.5c3.6 0 6.5 3.2 6.5 7.2 0 5.4-6.5 11.8-6.5 11.8s-6.5-6.4-6.5-11.8c0-4 2.9-7.2 6.5-7.2z" fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <circle cx="16" cy="13.4" r="2.3" fill="currentColor"/>
+      </svg>
+      <span class="brand__text">
+        <strong>周末出走</strong>
+        <em>WEEKEND ESCAPE</em>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="主导航">
+      <a href="#top" class="nav__link is-active">首页</a>
+      <a href="#destinations" class="nav__link">目的地</a>
+      <a href="#howto" class="nav__link">路线灵感</a>
+      <a href="#about" class="nav__link">关于</a>
+    </nav>
+
+    <div class="header__actions">
+      <button class="btn btn--ghost btn--sm" id="randomPick" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l8 10h4M4 17h4l2-2.5M20 7h-4l-1.6 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        帮我选一个
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="eyebrow__dot"></span>城市周末旅行指南 · 第 12 期</p>
+        <h1 class="hero__title">
+          四十八小时，<br>
+          <span class="hero__title-em">把生活搬到别处。</span>
+        </h1>
+        <p class="hero__lede">
+          不用请假，不用规划长假。挑一个高铁三小时内的城市，
+          带上一个小包，把周末过成一小段完整的生活。
+          我们替你算好了车程、预算和最佳季节。
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" href="#destinations">开始挑城市</a>
+          <button class="btn btn--text" id="heroRandom" type="button">
+            随便看看
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+        <dl class="hero__stats">
+          <div><dt>精选目的地</dt><dd>9<small>座城市</small></dd></div>
+          <div><dt>平均车程</dt><dd>2.1<small>小时</small></dd></div>
+          <div><dt>周末预算</dt><dd>¥680<small>人均起</small></dd></div>
+        </dl>
+      </div>
+
+      <div class="hero__collage" aria-hidden="true">
+        <figure class="postcard postcard--a">
+          <div class="postcard__art" id="pc1"></div>
+          <figcaption>杭州 · 茅家埠</figcaption>
+        </figure>
+        <figure class="postcard postcard--b">
+          <div class="postcard__art" id="pc2"></div>
+          <figcaption>大理 · 喜洲</figcaption>
+        </figure>
+        <figure class="postcard postcard--c">
+          <div class="postcard__art" id="pc3"></div>
+          <figcaption>苏州 · 平江路</figcaption>
+        </figure>
+        <span class="stamp">48H<br><em>ESCAPE</em></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESTINATIONS ============ -->
+  <section class="section" id="destinations">
+    <div class="wrap">
+      <div class="section__head">
+        <div class="section__title">
+          <p class="eyebrow">DESTINATIONS</p>
+          <h2>挑一个城市，出发</h2>
+          <p class="section__sub">按气质分类整理。每一张卡片都是一份可以照着走的周末方案。</p>
+        </div>
+        <div class="filters" id="filters" role="tablist" aria-label="目的地筛选"></div>
+      </div>
+
+      <div class="grid" id="grid" aria-live="polite"></div>
+      <p class="empty" id="empty" hidden>这个分类下暂时还没有城市，换个气质看看？</p>
+    </div>
+  </section>
+
+  <!-- ============ HOW TO ============ -->
+  <section class="section section--tint" id="howto">
+    <div class="wrap">
+      <div class="section__head section__head--center">
+        <p class="eyebrow">HOW TO WEEKEND</p>
+        <h2>周末的三种过法</h2>
+        <p class="section__sub">同样的 48 小时，三种完全不同的节奏。先想清楚你要哪一种。</p>
+      </div>
+      <div class="modes">
+        <article class="mode">
+          <span class="mode__num">01</span>
+          <h3>慢游派</h3>
+          <p>一天只安排一件事。早上在一个街区吃两小时早餐，下午找一间茶馆坐到日落。</p>
+          <p class="mode__for">适合：苏州 / 成都 / 景德镇</p>
+        </article>
+        <article class="mode">
+          <span class="mode__num">02</span>
+          <h3>暴走派</h3>
+          <p>两天走完三万步。博物馆、老城、夜市全部打卡，回程的高铁上睡到终点站。</p>
+          <p class="mode__for">适合：泉州 / 天津 / 杭州</p>
+        </article>
+        <article class="mode">
+          <span class="mode__num">03</span>
+          <h3>看海派</h3>
+          <p>目的地只需要有海、有风、有一张能坐很久的长椅。行程表上只写「日出」和「发呆」。</p>
+          <p class="mode__for">适合：阿那亚 / 厦门 / 大理</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT / CTA ============ -->
+  <section class="section" id="about">
+    <div class="wrap about">
+      <div class="about__copy">
+        <p class="eyebrow">ABOUT</p>
+        <h2>我们只推荐<br>自己愿意再去一次的地方</h2>
+        <p>
+          每一座城市都由编辑实地走过：车程是否真的只要两小时、
+          周末的房间会不会涨价、哪条巷子清晨最好看。
+          没有广告位，也不收推广费。
+        </p>
+      </div>
+      <div class="about__card">
+        <p class="about__card-k">下期预告</p>
+        <h3>往西三小时：<br>浙南的小城们</h3>
+        <p class="about__card-sub">松阳 · 遂昌 · 景宁</p>
+        <a class="btn btn--solid btn--sm" href="#destinations">先看看这一期</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <strong>周末出走</strong>
+      <p>城市周末旅行指南<br>每周三更新</p>
+    </div>
+    <div class="footer__cols">
+      <div>
+        <h4>逛一逛</h4>
+        <a href="#destinations">全部目的地</a>
+        <a href="#howto">路线灵感</a>
+        <a href="#about">关于我们</a>
+      </div>
+      <div>
+        <h4>按气质找</h4>
+        <a href="#destinations" data-jump="water">水乡古镇</a>
+        <a href="#destinations" data-jump="nature">山海自然</a>
+        <a href="#destinations" data-jump="city">城市漫游</a>
+      </div>
+      <div>
+        <h4>联系</h4>
+        <a href="mailto:hi@weekend-escape.cn">hi@weekend-escape.cn</a>
+        <a href="#top">回到顶部 ↑</a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer__bottom">
+    <span>© 2026 周末出走 Weekend Escape</span>
+    <span>纯前端演示站点 · 图片为程序生成的矢量风景</span>
+  </div>
+</footer>
+
+<!-- ============ MODAL ============ -->
+<div class="modal" id="modal" hidden>
+  <div class="modal__scrim" data-close></div>
+  <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal__close" type="button" data-close aria-label="关闭">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <div class="modal__art" id="modalArt"></div>
+    <div class="modal__body">
+      <p class="eyebrow" id="modalRegion"></p>
+      <h3 id="modalTitle"></h3>
+      <p class="modal__tagline" id="modalTagline"></p>
+      <ul class="modal__facts" id="modalFacts"></ul>
+      <h4>周末这样过</h4>
+      <ol class="plan" id="modalPlan"></ol>
+      <h4>值得专程去看看</h4>
+      <ul class="spots" id="modalSpots"></ul>
+    </div>
+  </div>
+</div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
